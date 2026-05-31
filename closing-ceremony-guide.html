@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-Friend 26th | Closing Ceremony</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8f9fb;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .serif-title { font-family: 'Cormorant Garamond', serif; }
+        
+        .ceremony-card { 
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gold-accent { color: #c5a059; }
+        .navy-accent { color: #1a2a6c; }
+        
+        .lang-btn { 
+            color: #94a3b8; 
+            font-size: 0.8rem; 
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+            border-radius: 99px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lang-btn.active { 
+            background-color: #1a2a6c;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(26, 42, 108, 0.2);
+        }
+
+        .rule-item {
+            position: relative;
+            padding-left: 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #4b5563;
+            counter-increment: step-counter;
+        }
+        .rule-item::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0; top: 0.2em;
+            width: 1.2rem; height: 1.2rem;
+            background: #f1f5f9;
+            color: #1a2a6c;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .character-float {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            font-size: 1.5rem;
+        }
+
+        .bubble {
+            position: relative;
+            background: #f1f5f9;
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: -8px; left: 20px;
+            border-width: 0 8px 8px 8px;
+            border-style: solid;
+            border-color: transparent transparent #f1f5f9 transparent;
+        }
+
+        .tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            background: #f8fafc;
+            color: #94a3b8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-weight: 700;
+            border: 1px solid #f1f5f9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="max-w-screen-sm mx-auto px-6 py-16">
+        <header class="text-center mb-16 animate-fade">
+            <div class="character-float mb-2 text-2xl">✨</div>
+            <span class="text-[10px] font-bold tracking-[0.4em] text-slate-400 uppercase mb-3 block">I-Friend 26th</span>
+            <h1 class="text-5xl serif-title navy-accent mb-4 italic uppercase">Closing Ceremony</h1>
+            <div class="h-px w-12 bg-amber-200 mx-auto mb-6"></div>
+            <p class="text-slate-400 text-[11px] tracking-[0.2em] font-semibold uppercase">Program Guide</p>
+        </header>
+
+        <nav class="flex justify-center items-center space-x-1 mb-12 animate-fade" style="animation-delay: 0.1s;">
+            <button onclick="changeLanguage('kr')" id="btn-kr" class="lang-btn active">한국어</button>
+            <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn">English</button>
+            <button onclick="changeLanguage('ja')" id="btn-ja" class="lang-btn">日本語</button>
+            <button onclick="changeLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
+        </nav>
+
+        <main id="content" class="space-y-12">
+            <section class="ceremony-card p-8 md:p-10 animate-fade" style="animation-delay: 0.2s;">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <span class="tag mb-3 inline-block">SESSION 01</span>
+                        <div class="flex items-center space-x-3">
+                            <h2 class="text-3xl font-bold navy-accent" id="game1-title">라이어 게임</h2>
+                            <span class="character-float">🦁</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[9px] text-slate-300 tracking-widest font-bold mb-1 uppercase">Time</p>
+                        <p class="text-sm font-semibold text-slate-500">19:05 — 19:40</p>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-5" id="how-to-label">Guide</h3>
+                        <ul class="space-y-5" id="game1-rules"></ul>
+                    </div>
+                    <div class="bg-amber-50/50 p-6 rounded-2xl flex items-center space-x-4 border border-amber-100/50">
+                        <div class="text-amber-600 text-xl"><i class="fas fa-gift"></i></div>
+                        <div>
+                            <p class="text-[9px] font-bold text-amber-600/60 uppercase tracking-widest mb-1" id="prize-label">Reward</p>
+                            <p class="text-sm text-slate-700 font-bold" id="game1-prize"></p>
+                        </div>
+                    </div>
+                    <div class="bubble"><span id="game1-tip"></span></div>
+                </div>
+            </section>
+
+            <section class="ceremony-card p-8 md:p-10 animate-fade" style="animation-delay: 0.3s;">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <span class="tag mb-3 inline-block">SESSION 02</span>
+                        <div class="flex items-center space-x-3">
+                            <h2 class="text-3xl font-bold navy-accent" id="game2-title">뮤직 스탑 빙고</h2>
+                            <span class="character-float" style="animation-delay: 0.5s;">🐼</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[9px] text-slate-300 tracking-widest font-bold mb-1 uppercase">Time</p>
+                        <p class="text-sm font-semibold text-slate-500">19:35 — 20:00</p>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-5" id="how-to-label2">Guide</h3>
+                        <ul class="space-y-5" id="game2-rules"></ul>
+                    </div>
+                    <div class="bg-indigo-50/50 p-6 rounded-2xl flex items-center space-x-4 border border-indigo-100/50">
+                        <div class="text-indigo-600 text-xl"><i class="fas fa-star"></i></div>
+                        <div>
+                            <p class="text-[9px] font-bold text-indigo-600/60 uppercase tracking-widest mb-1" id="prize-label2">Point!</p>
+                            <p class="text-sm text-slate-700 font-bold" id="game2-prize"></p>
+                        </div>
+                    </div>
+                    <div class="bubble"><span id="game2-tip"></span></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-24 pb-12 animate-fade" style="animation-delay: 0.4s;">
+            <div class="flex justify-center space-x-2 mb-4 opacity-30 text-xs">
+                <span>🎈</span><span>🎊</span><span>🎈</span>
+            </div>
+            <p class="text-[10px] text-slate-300 tracking-widest uppercase font-bold">© 2026 I-Friend 26th Closing Ceremony</p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            kr: {
+                game1Title: "라이어 게임",
+                game1Rules: [
+                    "라운드별로 각 조의 대표자가 무대로 나옵니다.",
+                    "대표자들은 제시어를 받지만, 한 명의 '라이어'는 다른 제시어를 받거나 본인이 라이어임을 알게 됩니다.",
+                    "한 명씩 돌아가며 제시어를 직접 말하지 않고 한 문장으로 설명합니다.",
+                    "모든 설명이 끝난 후, 조별로 3분간 의논하여 라이어를 지목합니다.",
+                    "투표 후 라이어의 정체가 공개됩니다."
+                ],
+                game1Prize: "라이어를 맞춘 조 전원에게 마스크팩 증정!",
+                game1Tip: "💡 조원들과 상의해서 진짜 라이어를 찾아 투표하세요!",
+                game2Title: "뮤직 스탑 빙고",
+                game2Rules: [
+                    "빙고 용지와 볼펜을 받습니다.",
+                    "음악이 나오면 자유롭게 춤을 추며 이동합니다.",
+                    "음악이 멈추면 가장 가까이 있는 다른 조원과 짝이 됩니다.",
+                    "30초 동안 자기소개와 함께 빙고지의 질문을 주고받습니다.",
+                    "서로의 빙고판에 같이 적혀있는 질문으로 이야기를 나누고 사인을 받습니다.",
+                    "음악이 다시 나오면 새로운 짝을 찾아 이동합니다."
+                ],
+                game2Prize: "다른조에서 새로운 아이프렌드를 찾아봐요!",
+                game2Tip: "💡 음악이 나오는 동안 자유롭게 움직이며 새로운 아이프렌드를 찾아보세요!",
+                ui: { howTo: "Guide", prize: "Reward", point: "Point!" }
+            },
+            en: {
+                game1Title: "Liar Game",
+                game1Rules: [
+                    "Representatives from each group gather on stage for each round.",
+                    "A secret word is given; the 'Liar' receives a decoy or none at all.",
+                    "Describe the word in one sentence without revealing the word itself.",
+                    "Groups deliberate for 3 minutes to cast their votes.",
+                    "The identity of the Liar is unveiled following the vote."
+                ],
+                game1Prize: "Gifts awarded to groups that successfully identify the Liar.",
+                game1Tip: "💡 Discuss with your team to find and vote for the real Liar!",
+                game2Title: "Music Stop Bingo",
+                game2Rules: [
+                    "Collect your official Bingo sheet and writing instrument.",
+                    "Move and express yourself freely while the music resonates.",
+                    "As the music fades, partner with a member from a different group.",
+                    "Introduce yourselves and discuss using the common questions on your Bingo sheets.",
+                    "Discuss and exchange signatures based on shared interests.",
+                    "Prepare to transition to a new partner when the music resumes."
+                ],
+                game2Prize: "Connect with a new i-Friend from another collective.",
+                game2Tip: "💡 While the music plays, move around and look for your next new i-Friend!",
+                ui: { howTo: "Guide", prize: "Reward", point: "Key Point" }
+            },
+            ja: {
+                game1Title: "ライアーゲーム",
+                game1Rules: [
+                    "各ラウンドごとに、各グループの代表者がステージに上がります。",
+                    "代表者にはお題が与えられますが、一人の「ライアー」には別のお題が与えられるか、自分がライアーであることを知らされます。",
+                    "一人ずつ順番に、お題を直接言わずに一文で説明します。",
+                    "全員の説明が終わった後、各グループで3分間話し合ってライアーを特定します。",
+                    "投票後、ライアーの正体が公開されます。"
+                ],
+                game1Prize: "ライアーを当てたグループ全員にマスクパックをプレゼント！",
+                game1Tip: "💡 チームメイトと相談して、本物のライアーを見つけて投票しましょう！",
+                game2Title: "ミュージック・ストップ・ビンゴ",
+                game2Rules: [
+                    "ビンゴ用紙とボールペンを受け取ります。",
+                    "音楽が流れている間、自由に踊りながら移動します。",
+                    "音楽が止まったら、一番近くにいる別のグループの人とペアになります。",
+                    "30秒間、自己紹介とともにビンゴの質問を交わします。",
+                    "お互いのビンゴカードに書かれている共通の質問で話し合い、署名を交換します。",
+                    "音楽が再び流れたら、新しい出会いを探して移動します。"
+                ],
+                game2Prize: "他のグループで新しいアイフレンドを見つけましょう！",
+                game2Tip: "💡 音楽が流れている間、自由に動いて新しいアイフレンドを探してみましょう！",
+                ui: { howTo: "進行方法", prize: "報酬", point: "ポイント！" }
+            },
+            zh: {
+                game1Title: "说谎者游戏",
+                game1Rules: [
+                    "各组代表按轮次受邀上台。",
+                    "代表们会收到一个关键词，但其中一位“说谎者”将获得不同指令或被告知是说谎者。",
+                    "轮流用一句话描述关键词，注意不要直接说出词名。",
+                    "描述结束后，各组有3分钟时间讨论并投出关键一票。",
+                    "投票结束后，现场揭晓说谎者的真实身份。"
+                ],
+                game1Prize: "成功识破说谎者的团队将获得精美礼品。",
+                game1Tip: "💡 与组员讨论，找出真正的说谎者并投票吧！",
+                game2Title: "音乐停止宾果",
+                game2Rules: [
+                    "领取专属宾果卡与签字笔。",
+                    "随音乐节奏自由律动并移动位置。",
+                    "音乐停止时，请与最近的非本组团员结对。",
+                    "在30秒内进行自我介绍并询问宾果卡上的共同问题。",
+                    "根据宾果卡上的共同问题进行交流，并交换彼此的签名。",
+                    "音乐再次响起时，请出发寻找下一位伙伴。"
+                ],
+                game2Prize: "去别的组结识新的 i-Friend 吧！",
+                game2Tip: "💡 音乐响起时，请随心所欲地移动，去寻找新的 i-Friend 吧！",
+                ui: { howTo: "游戏规则", prize: "奖励", point: "关键点！" }
+            }
+        };
+
+        function changeLanguage(lang) {
+            const data = translations[lang];
+            document.getElementById('game1-title').innerText = data.game1Title;
+            document.getElementById('game2-title').innerText = data.game2Title;
+            document.getElementById('how-to-label').innerText = data.ui.howTo;
+            document.getElementById('how-to-label2').innerText = data.ui.howTo;
+            document.getElementById('prize-label').innerText = data.ui.prize;
+            document.getElementById('prize-label2').innerText = data.ui.point;
+            document.getElementById('game1-prize').innerText = data.game1Prize;
+            document.getElementById('game2-prize').innerText = data.game2Prize;
+            document.getElementById('game1-tip').innerText = data.game1Tip;
+            document.getElementById('game2-tip').innerText = data.game2Tip;
+            updateList('game1-rules', data.game1Rules);
+            updateList('game2-rules', data.game2Rules);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+        }
+
+        function updateList(id, rules) {
+            const list = document.getElementById(id);
+            list.innerHTML = '';
+            list.style.counterReset = 'step-counter';
+            rules.forEach(rule => {
+                const li = document.createElement('li');
+                li.className = 'rule-item';
+                li.innerText = rule;
+                list.appendChild(li);
+            });
+        }
+
+        changeLanguage('kr');
+    </script>
+</body>
+</html>
