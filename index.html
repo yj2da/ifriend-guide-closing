@@ -131,6 +131,8 @@
             <button onclick="changeLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
         </nav>
 
+        <p id="time-notice" class="text-center text-[10px] text-slate-400 italic mb-6 animate-fade" style="animation-delay: 0.15s;"></p>
+
         <main id="content" class="space-y-12">
             <section class="ceremony-card p-8 md:p-10 animate-fade" style="animation-delay: 0.2s;">
                 <div class="flex justify-between items-start mb-8">
@@ -227,7 +229,7 @@
                 ],
                 game2Prize: "세 줄 빙고 완성 시 상품 증정! (소진 시 조기 마감)",
                 game2Tip: "💡 빙고를 완성한 후에도, 자유롭게 움직이며 새로운 친구를 만나봐요!",
-                ui: { howTo: "Guide", prize: "Reward", point: "Point!" }
+                ui: { howTo: "Guide", prize: "Reward", point: "Point!", notice: "* 진행 상황에 따라 시간이 유동적으로 변경될 수 있습니다." }
             },
             en: {
                 game1Title: "Liar Game",
@@ -253,7 +255,7 @@
                 ],
                 game2Prize: "Prizes will be given to participants who complete 3 lines of Bingo! (Until supplies last)",
                 game2Tip: "💡 Even after completing Bingo, keep moving and meet new friends!",
-                ui: { howTo: "Guide", prize: "Reward", point: "Tip!" }
+                ui: { howTo: "Guide", prize: "Reward", point: "Tip!", notice: "* Times are subject to change depending on progress." }
             },
             ja: {
                 game1Title: "ライアーゲーム",
@@ -279,7 +281,7 @@
                 ],
                 game2Prize: "3列ビンゴ完成で賞品ゲット！（無くなり次第終了）",
                 game2Tip: "💡 ビンゴを完成させた後も、自由に動いて新しい友達を作ってみましょう！",
-                ui: { howTo: "GUIDE", prize: "報酬", point: "ポイント！" }
+                ui: { howTo: "GUIDE", prize: "報酬", point: "ポイント！", notice: "* 進行状況により、時間は変動する場合があります。" }
             },
             zh: {
                 game1Title: "说谎者游戏",
@@ -297,15 +299,15 @@
                 game2Rules: [
                     "领取专属宾果卡与签字笔。",
                     "随音乐节奏自由移动。",
-                    "在移动过程中寻找伙伴结成对子。",
+                    "在移动过程中寻找一位伙伴进行交流。",
                     "在自我介绍的同时，针对宾果卡上的问题进行问答。",
-                    "交流结束后，获取对方的回答和签名。",
+                    "交流结束后，记录对方的回答并请对方签名。",
                     "填满格位后，请寻找新的伙伴并继续移动。",
                     "完成三行宾果后，请到台前领取奖品。"
                 ],
                 game2Prize: "完成三行宾果即可领奖！（奖品送完即止）",
                 game2Tip: "💡 即使在完成宾果后，也请随心所欲地移动，去结识新的朋友吧！",
-                ui: { howTo: "GUIDE", prize: "奖励", point: "小贴士！" }
+                ui: { howTo: "GUIDE", prize: "奖励", point: "小贴士！", notice: "* 时间可能会根据进度有所变动。" }
             }
         };
 
@@ -321,6 +323,7 @@
             document.getElementById('game2-prize').innerText = data.game2Prize;
             document.getElementById('game1-tip').innerText = data.game1Tip;
             document.getElementById('game2-tip').innerText = data.game2Tip;
+            document.getElementById('time-notice').innerText = data.ui.notice;
             updateList('game1-rules', data.game1Rules);
             updateList('game2-rules', data.game2Rules);
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
